@@ -10,11 +10,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config()
-mongoose.connect(process.env.DB_URI, err => {
-  if (err) {
-    throw err;
-  }
-  console.log('Database connected')
+
   /**
  * Get port from environment and store in Express.
  */
@@ -96,4 +92,3 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-})

@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-
+const connection = require('../database/index')()
+const { Schema } =require('mongoose')
 
 const resourceSchema = new Schema({
     name: {
@@ -13,4 +13,4 @@ const resourceSchema = new Schema({
     }
 })
 
-module.exports = model("Resource", resourceSchema);
+module.exports = () => connection.then(conn => conn.model("Resource", resourceSchema))
