@@ -2,10 +2,10 @@ import { Router } from "express";
 import { IndexController } from "../controller";
 const router = Router();
 
-router.get('/', IndexController.getMany);
-router.post('/', IndexController.create);
+router.get('/:resourcename', IndexController.getMany);
+router.post('/:resourcename', IndexController.create);
 
-router.route('/:id')
+router.route('/:resourcename/:id')
     .get(IndexController.getOne)
     .patch(IndexController.update)
     .delete(IndexController.delete);
