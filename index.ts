@@ -5,12 +5,12 @@ import IndexRouter from "./router";
 import TemplateRouter from "./router/template";
 import { connect } from "mongoose";
 import {MONGO_DB_URL} from "./config";
-
+const cors =  require("cors");
 
 
 const app = express();
 
-
+app.use(cors());
 app.use(express.json())
 app.use('/template', TemplateRouter);
 app.use('/', IndexRouter);
@@ -18,7 +18,7 @@ app.use((req, res) => {
     res.sendStatus(404);
 })
 
-connect(MONGO_DB_URL, {useNewUrlParser: true, useFindAndModify: true}, err => {
+connect(MONGO_DB_URL, {useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true}, err => {
     if (err) {
         console.error(err);
         throw err;
