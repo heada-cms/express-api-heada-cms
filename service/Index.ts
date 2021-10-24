@@ -1,11 +1,12 @@
 import { Model, model, Schema } from "mongoose";
 import { TemplateService } from "./Template";
-export class IndexService {
+import { BasicService } from "../abstractClasses/BasicService";
+export class IndexService extends BasicService {
     private TemplateService: TemplateService;
-    private model?: Model<any> | null = null;
     private modelName: string;
 
     constructor(modelName: string) {
+        super();
         this.TemplateService = new TemplateService();
         this.modelName = modelName;
     }
@@ -20,24 +21,24 @@ export class IndexService {
 
     async getMany(params: any) {
         await this.loadModel();
-        return await this.model.find(params).exec();
+        return await super.getMany(params);
     }
     
     async getOne(id: string) {
         await this.loadModel();
-        return await this.model.findById(id).exec();
+        return await super.getOne(id);
     }
 
     async create(payload: any) {
         await this.loadModel();
-        return await new this.model(payload).save();
+        return await super.create(payload);
     }
     async update(id:string, payload: any) {
         await this.loadModel();
-        return await this.model.findByIdAndUpdate(id, payload, {new: true}).exec();
+        return await super.update(id, payload);
     }
     async delete(id: string) {
         await this.loadModel();
-        return await this.model.findByIdAndDelete(id).exec();
+        return await super.delete(id);
     }
 }

@@ -2,6 +2,7 @@ import { IndexController } from "./controller/index";
 import express = require("express");
 import { APP_PORT } from "./config";
 import IndexRouter from "./router";
+import UserRouter from "./router/user";
 import TemplateRouter from "./router/template";
 import { connect } from "mongoose";
 import {MONGO_DB_URL} from "./config";
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json())
+app.use('/user', UserRouter)
 app.use('/template', TemplateRouter);
 app.use('/', IndexRouter);
 app.use((req, res) => {
