@@ -1,13 +1,14 @@
 import { Router } from "express";
 import { TemplateController } from "../controller/Template";
+import {authorizationMiddleware} from "../middleware/Template";
 const router: Router = Router();
 
 
-router.get('/', TemplateController.getTemplates);
-router.get('/:name', TemplateController.getTemplate);
-router.post('/', TemplateController.createTemplate);
-router.patch('/:name', TemplateController.updateTemplate);
-router.delete('/:name', TemplateController.deleteTemplate);
+router.get('/', authorizationMiddleware,TemplateController.getTemplates);
+router.get('/:name', authorizationMiddleware,TemplateController.getTemplate);
+router.post('/', authorizationMiddleware,TemplateController.createTemplate);
+router.patch('/:name', authorizationMiddleware,TemplateController.updateTemplate);
+router.delete('/:name', authorizationMiddleware,TemplateController.deleteTemplate);
 
 export default router;
 

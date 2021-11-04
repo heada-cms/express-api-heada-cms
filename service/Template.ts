@@ -15,7 +15,7 @@ export class TemplateService {
     }
 
     public async getTemplate(name: string): Promise<ITemplate>{
-        return await this.TemplateModel.findOne({name}).exec();
+        return await this.TemplateModel.findOne({name}).populate(["authorization.read.apiKeys", "authorization.create.apiKeys", "authorization.update.apiKeys", "authorization.delete.apiKeys"]).exec();
     }
 
     public async updateTemplate(name: string, payload: Partial<ITemplate>): Promise<ITemplate> {
