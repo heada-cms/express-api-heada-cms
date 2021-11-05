@@ -15,18 +15,25 @@ export const authorizationMiddleware =
             return;
         }    
         
-        jwt.verify(authToken, JWT_KEY, async (err, {id}) => {
-            const userService = new UserService();
-
-            const user = await userService.getOne(id);
-            if (user === null) {
+        jwt.verify(authToken, JWT_KEY, async (err, decoded) => {
+            if (err) {
                 res.sendStatus(403);
-            } else {
-                next();
+                return;
+            }
+            const userService = new UserService();
+            
+            try {
+                const user = await userService.getOne(decoded.id);
+           
+            
+
+                if (user === null) {
+                    res.sendStatus(403);
+                } else {
+                    next();
+                }
+            } catch (error) {
+                res.sendStatus(400);
             }
         })
-        
-
-
-
     }

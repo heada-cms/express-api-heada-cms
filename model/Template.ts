@@ -5,20 +5,24 @@ export interface ITemplate {
     schema: string;
     authorization: {
         read: {
+            requiresAuth: boolean;
             availableMethods: string[];
-            apiKeys?: string[];
+            apiKeys: string[];
         };
         create: {
+            requiresAuth: boolean;
             availableMethods: string[];
-            apiKeys?: string[];
+            apiKeys: string[];
         };
         update: {
+            requiresAuth: boolean;
             availableMethods: string[];
-            apiKeys?: string[];
+            apiKeys: string[];
         };
         delete: {
+            requiresAuth: boolean;
             availableMethods: string[];
-            apiKeys?: string[];
+            apiKeys: string[];
         }
     }
 }
@@ -33,62 +37,82 @@ const TemplateSchema = new Schema<ITemplate>({
         template: true
     },
     authorization:  {
-        read: {
-            requiresAuth: {
-                type: Boolean,
-                required: true,
-                default: false
+        required: true,
+        type: {
+            read: {
+                requiresAuth: {
+                    type: Boolean,
+                    required: true,
+                    default: false
+                },
+                availableMethods: {
+                    type: [String],
+                    required: true, 
+                    enum: ["Bearer", "ApiKey"],
+                    default: ["Bearer"]
+                },
+                apiKeys: {
+                    type: [String],
+                    default: [],
+                    required: true
+                }
             },
-            availableMethods: {
-                type: [String],
-                required: true, 
-                enum: ["Bearer", "ApiKey"],
-                default: ["Bearer"]
+            create: {
+                requiresAuth: {
+                    type: Boolean,
+                    required: true,
+                    default: false
+                },
+                availableMethods: {
+                    type: [String],
+                    required: true, 
+                    enum: ["Bearer", "apiKey"],
+                    default: ["Bearer"]
+                },
+                apiKeys: {
+                    type: [String],
+                    default: [],
+                    required: true
+                }
             },
-            apiKeys: [String]
-        },
-        create: {
-            requiresAuth: {
-                type: Boolean,
-                required: true,
-                default: false
+            update: {
+                requiresAuth: {
+                    type: Boolean,
+                    required: true,
+                    default: false
+                },
+                availableMethods: {
+                    type: [String],
+                    required: true, 
+                    enum: ["Bearer", "apiKey"],
+                    default: ["Bearer"]
+                },
+                apiKeys: {
+                    type: [String],
+                    default: [],
+                    required: true
+                }
             },
-            availableMethods: {
-                type: [String],
-                required: true, 
-                enum: ["Bearer", "apiKey"],
-                default: ["Bearer"]
-            },
-            apiKeys: [String]
-        },
-        update: {
-            requiresAuth: {
-                type: Boolean,
-                required: true,
-                default: false
-            },
-            availableMethods: {
-                type: [String],
-                required: true, 
-                enum: ["Bearer", "apiKey"],
-                default: ["Bearer"]
-            },
-            apiKeys: [String]
-        },
-        delete: {
-            requiresAuth: {
-                type: Boolean,
-                required: true,
-                default: false
-            },
-            availableMethods: {
-                type: [String],
-                required: true, 
-                enum: ["Bearer", "apiKey"],
-                default: ["Bearer"]
-            },
-            apiKeys: [String]
+            delete: {
+                requiresAuth: {
+                    type: Boolean,
+                    required: true,
+                    default: false
+                },
+                availableMethods: {
+                    type: [String],
+                    required: true, 
+                    enum: ["Bearer", "apiKey"],
+                    default: ["Bearer"]
+                },
+                apiKeys: {
+                    type: [String],
+                    default: [],
+                    required: true
+                }
+            }
         }
+        
     }
 })
 

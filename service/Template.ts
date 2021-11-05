@@ -7,15 +7,20 @@ export class TemplateService {
     }
 
     public async createTemplate(payload: ITemplate): Promise<ITemplate>  {
-        return await this.TemplateModel.create(payload);
+        try { 
+            return await this.TemplateModel.create(payload);
+        } catch (e) {
+            throw e;
+        }
+        
     }
 
     public async getTemplates(params: Record<string,any> = {} ): Promise<ITemplate[]> {
-        return await this.TemplateModel.find(params).exec();
+        return await this.TemplateModel.find(params).lean().exec();
     }
 
     public async getTemplate(name: string): Promise<ITemplate>{
-        return await this.TemplateModel.findOne({name}).populate(["authorization.read.apiKeys", "authorization.create.apiKeys", "authorization.update.apiKeys", "authorization.delete.apiKeys"]).exec();
+        return await this.TemplateModel.findOne({name}).lean().exec();
     }
 
     public async updateTemplate(name: string, payload: Partial<ITemplate>): Promise<ITemplate> {

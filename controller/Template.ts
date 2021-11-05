@@ -14,7 +14,7 @@ export class TemplateController {
 
             res.send(templates);
         } catch (err) {
-            throw err;
+            res.status(400).send(err.message)
         }
     }
 
@@ -26,7 +26,7 @@ export class TemplateController {
 
             res.send(template);
         } catch(err) {
-            throw err;
+            res.status(400).send(err.message)
         }
     }
 
@@ -37,7 +37,7 @@ export class TemplateController {
 
             res.send(template);
         } catch(err) {
-            throw err;
+            res.status(400).send(err.message)
         }
     }
 
@@ -49,7 +49,7 @@ export class TemplateController {
 
             res.sendStatus(204);
         } catch (err) {
-            throw err;
+            res.status(400).send(err.message)
         }
     }
 
@@ -63,7 +63,7 @@ export class TemplateController {
 
             res.sendStatus(204);
         } catch (err) {
-            throw err;
+            res.status(400).send(err.message)
         }
     }
     
