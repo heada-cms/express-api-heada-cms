@@ -3,7 +3,7 @@ import { IndexService } from "../service/Index";
 export class IndexController {
     private static Services: Map<string, IndexService> = new Map<string, IndexService>();
 
-    
+     
 
     //getMany
     public static async getMany(req: Request, res: Response) {

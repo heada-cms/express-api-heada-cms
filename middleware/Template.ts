@@ -24,8 +24,6 @@ export const authorizationMiddleware =
             
             try {
                 const user = await userService.getOne(decoded.id);
-           
-            
 
                 if (user === null) {
                     res.sendStatus(403);

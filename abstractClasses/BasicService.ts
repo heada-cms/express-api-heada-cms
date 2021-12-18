@@ -14,7 +14,7 @@ export abstract class BasicService {
         return await this.model.findById(id).exec();
     }
 
-    async create(payload: any) {
+    async create(payload: unknown) {
         return await new this.model(payload).save();
     }
     async update(id:string, payload: any) {
