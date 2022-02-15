@@ -30,7 +30,7 @@ connect(MONGO_DB_URL, {useNewUrlParser: true, useFindAndModify: true, useUnified
         console.error(err);
         throw err;
     }
-    new UserService().create({ username: 'admin', password: 'admin1'})
+    new UserService().create({ username: 'admin', password: 'admin1', admin: true})
     console.log("Database connected")
     app.listen(APP_PORT);
 })
