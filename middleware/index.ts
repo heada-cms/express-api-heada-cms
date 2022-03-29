@@ -83,9 +83,6 @@ export const JWTOnlyAuthMiddleware = async (req: Request, res: Response, next: N
         
         try {
             const user = await userService.getOne(decoded.id);
-       
-        
-
             if (user === null) {
                 res.sendStatus(403);
             } else {
