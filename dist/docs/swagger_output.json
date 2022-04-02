@@ -1,0 +1,612 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/user/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "A typical response",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      }
+    },
+    "/api/user/auth": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "username": "String",
+            "password": "String",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "example": "JWT_TOKEN"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      }
+    },
+    "/api/template/": {
+      "get": {
+        "description": "Downloads all resources with their mongoose templates",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Template"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "description": "Creates template",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/createTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "$ref": "#/definitions/Template"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/template/{name}": {
+      "get": {
+        "description": "Downloads resource with given id with its mongoose template",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "$ref": "#/definitions/Template"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "description": "Updates template with given name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes template with given name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/keys/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/apiKey"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/{resourcename}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resourcename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "type": "array",
+              "example": [
+                "ANY Object"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resourcename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "A typical response",
+            "schema": {
+              "type": "string",
+              "example": "ANY Object",
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/{resourcename}/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resourcename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "type": "string",
+              "example": "ANY Object",
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resourcename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resourcename",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A typical response",
+            "schema": {
+              "type": "string",
+              "example": "ANY Object",
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Template": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "6feda32"
+        },
+        "name": {
+          "type": "string",
+          "example": "Temperature"
+        },
+        "schema": {
+          "type": "string",
+          "example": "any possible JSON in mongoose syntax"
+        },
+        "authorization": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "boolean",
+              "example": true
+            },
+            "create": {
+              "type": "boolean",
+              "example": false
+            },
+            "update": {
+              "type": "boolean",
+              "example": true
+            },
+            "delete": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "createTemplate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Temperature"
+        },
+        "schema": {
+          "type": "string",
+          "example": "any possible JSON in mongoose syntax"
+        },
+        "authorization": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "boolean",
+              "example": true
+            },
+            "create": {
+              "type": "boolean",
+              "example": false
+            },
+            "update": {
+              "type": "boolean",
+              "example": true
+            },
+            "delete": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "updateTemplate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Temperature"
+        },
+        "schema": {
+          "type": "string",
+          "example": "any possible JSON in mongoose syntax"
+        },
+        "authorization": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "boolean",
+              "example": true
+            },
+            "create": {
+              "type": "boolean",
+              "example": false
+            },
+            "update": {
+              "type": "boolean",
+              "example": true
+            },
+            "delete": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "john_doe"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        },
+        "admin": {
+          "type": "boolean",
+          "example": true
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        }
+      }
+    },
+    "apiKey": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "boolean",
+              "example": true
+            },
+            "create": {
+              "type": "boolean",
+              "example": false
+            },
+            "update": {
+              "type": "boolean",
+              "example": true
+            },
+            "delete": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        },
+        "key": {
+          "type": "string",
+          "example": "key"
+        }
+      }
+    }
+  }
+}
