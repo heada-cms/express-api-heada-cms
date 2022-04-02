@@ -3,9 +3,4 @@ dist
 .vscode
 .env
 
-/panel/*.html
-/panel/*.js
-/panel/*.css
-/panel/**/*.js
-
-/panel/**/*.css
+panel

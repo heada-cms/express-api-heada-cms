@@ -8,6 +8,9 @@ export class APIKeyController {
     static async create(req: Request, res: Response) {
         try {
             const key = await APIKeyController.Service.create(req.body);
+             /* #swagger.responses[200] = { 
+                schema: [{ $ref: "#/definitions/apiKey"}]
+            } */
             res.json(key)
         } catch (err) {
             res.status(400).send(err.message);
