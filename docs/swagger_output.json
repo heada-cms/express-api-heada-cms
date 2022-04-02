@@ -449,36 +449,117 @@
     "Template": {
       "type": "object",
       "properties": {
-        "_id": {
+        "type": {
           "type": "string",
-          "example": "6feda32"
+          "example": "object"
         },
-        "name": {
-          "type": "string",
-          "example": "Temperature"
-        },
-        "schema": {
-          "type": "string",
-          "example": "any possible JSON in mongoose syntax"
-        },
-        "authorization": {
+        "properties": {
           "type": "object",
           "properties": {
-            "read": {
-              "type": "boolean",
-              "example": true
+            "_id": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "6feda32"
+                }
+              }
             },
-            "create": {
-              "type": "boolean",
-              "example": false
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Temperature"
+                }
+              }
             },
-            "update": {
-              "type": "boolean",
-              "example": true
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "any possible JSON in mongoose syntax"
+                }
+              }
             },
-            "delete": {
-              "type": "boolean",
-              "example": true
+            "authorization": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "read": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "update": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "delete": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -487,32 +568,104 @@
     "createTemplate": {
       "type": "object",
       "properties": {
-        "name": {
+        "type": {
           "type": "string",
-          "example": "Temperature"
+          "example": "object"
         },
-        "schema": {
-          "type": "string",
-          "example": "any possible JSON in mongoose syntax"
-        },
-        "authorization": {
+        "properties": {
           "type": "object",
           "properties": {
-            "read": {
-              "type": "boolean",
-              "example": true
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Temperature"
+                }
+              }
             },
-            "create": {
-              "type": "boolean",
-              "example": false
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "any possible JSON in mongoose syntax"
+                }
+              }
             },
-            "update": {
-              "type": "boolean",
-              "example": true
-            },
-            "delete": {
-              "type": "boolean",
-              "example": true
+            "authorization": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "read": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "update": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "delete": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -521,32 +674,104 @@
     "updateTemplate": {
       "type": "object",
       "properties": {
-        "name": {
+        "type": {
           "type": "string",
-          "example": "Temperature"
+          "example": "object"
         },
-        "schema": {
-          "type": "string",
-          "example": "any possible JSON in mongoose syntax"
-        },
-        "authorization": {
+        "properties": {
           "type": "object",
           "properties": {
-            "read": {
-              "type": "boolean",
-              "example": true
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Temperature"
+                }
+              }
             },
-            "create": {
-              "type": "boolean",
-              "example": false
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "any possible JSON in mongoose syntax"
+                }
+              }
             },
-            "update": {
-              "type": "boolean",
-              "example": true
-            },
-            "delete": {
-              "type": "boolean",
-              "example": true
+            "authorization": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "read": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "update": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "delete": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -555,24 +780,78 @@
     "user": {
       "type": "object",
       "properties": {
-        "username": {
+        "type": {
           "type": "string",
-          "example": "john_doe"
+          "example": "object"
         },
-        "password": {
-          "type": "string",
-          "example": "password"
-        },
-        "admin": {
-          "type": "boolean",
-          "example": true
-        },
-        "roles": {
+        "properties": {
           "type": "object",
           "properties": {
-            "role": {
-              "type": "boolean",
-              "example": false
+            "username": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "john_doe"
+                }
+              }
+            },
+            "password": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "password"
+                }
+              }
+            },
+            "admin": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "boolean"
+                },
+                "example": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            },
+            "roles": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -581,30 +860,93 @@
     "apiKey": {
       "type": "object",
       "properties": {
-        "operation": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
           "type": "object",
           "properties": {
-            "read": {
-              "type": "boolean",
-              "example": true
+            "operation": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "read": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "create": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "update": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "delete": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             },
-            "create": {
-              "type": "boolean",
-              "example": false
-            },
-            "update": {
-              "type": "boolean",
-              "example": true
-            },
-            "delete": {
-              "type": "boolean",
-              "example": false
+            "key": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "key"
+                }
+              }
             }
           }
-        },
-        "key": {
-          "type": "string",
-          "example": "key"
         }
       }
     }
