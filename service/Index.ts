@@ -12,11 +12,9 @@ export class IndexService extends BasicService {
     }
 
     private async loadModel() {
-        if (!this.model) {
-            const template = await this.TemplateService.getTemplate(this.modelName);
-            // console.log(template);
-            this.model = model(this.modelName, new Schema(JSON.parse(template.schema)));
-        }
+        const template = await this.TemplateService.getTemplate(this.modelName);
+        // console.log(template);
+        this.model = model(this.modelName, new Schema(JSON.parse(template.schema)));
     }
 
     async getMany(params: any) {

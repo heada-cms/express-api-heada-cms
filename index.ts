@@ -5,6 +5,7 @@ import IndexRouter from "./router";
 import UserRouter from "./router/user";
 import TemplateRouter from "./router/template";
 import APIKeyRouter from "./router/apiKey";
+import mongoose =require("mongoose");
 import { connect } from "mongoose";
 import {MONGO_DB_URL} from "./config";
 import * as path from "path";
@@ -28,6 +29,8 @@ app.use('/', express.static(path.join(__dirname, 'panel')))
 app.use((req, res) => {
     res.sendStatus(404);
 })
+
+mongoose.set('overwriteModels', true);
 
 connect(MONGO_DB_URL, {useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true}, err => {
     if (err) {
