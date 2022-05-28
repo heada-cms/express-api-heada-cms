@@ -24,7 +24,7 @@ export class TemplateService {
     }
 
     public async updateTemplate(name: string, payload: Partial<ITemplate>): Promise<ITemplate> {
-        return await this.TemplateModel.findOneAndUpdate({name, payload}).exec();
+        return await this.TemplateModel.findOneAndUpdate({name}, payload).exec();
     }
 
     public async deleteTemplate(name: string): Promise<ITemplate> {
